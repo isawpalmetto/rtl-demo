@@ -6,10 +6,8 @@ function Stats({ name, count, isRealName }) {
   const countText = count > 1 ? `submitted: ${count} times` : "submitted once";
   return (
     <Alert heading="Name Information">
-      <>
-        <div>{`name: ${name}${nameRealText}`}</div>
-        <div>{countText}</div>
-      </>
+      <div>{`name: ${name}${nameRealText}`}</div>
+      <div>{countText}</div>
     </Alert>
   );
 }
@@ -53,12 +51,17 @@ function Thing() {
           errorMessage={errorMessage}
         />
         <div className="ds-u-margin-bottom--2">
-          <label htmlFor="name-check">Is this your real name?</label>
+          <label htmlFor="name-id">
+            <span className="ds-u-visibility--screen-reader">
+              Is this your{" "}
+            </span>
+            real name?
+          </label>
           <input
             onChange={handleNameCheck}
             type="checkbox"
             name="name-checkbox"
-            id="name-check"
+            id="name-id"
           />
         </div>
         <Button
@@ -78,7 +81,7 @@ function Thing() {
             }
           }}
         >
-          Submit Name
+          Submit<span className="ds-u-visibility--screen-reader"> Name</span>
         </Button>
         {hasSubmitted && (
           <Stats
